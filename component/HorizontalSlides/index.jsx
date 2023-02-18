@@ -1,49 +1,76 @@
 import { useRect } from "@studio-freight/hamo"
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import clsx from "clsx";
-import useScroll from "@dh-react-hooks/use-scroll"
 import { useWindowSize } from "use-hooks"
-import { mapRange, clamp } from "../../lib/math"
-import gsap from "gsap";
+import { gsap } from "gsap"
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import {
+    motion,
+    useScroll,
+    useAnimationFrame,
+    useMotionValueEvent,
+    useMotionValue,
+    useVelocity,
+    useSpring,
+    useInView
+} from "framer-motion"
+
+gsap.registerPlugin(ScrollTrigger);
 
 const HorizontalSlides = props => {
     const [wrapperRectRef, wrapperRect] = useRect();
     const [nodeRectRef, nodeRect] = useRect();
     const wrapperRef = useRef();
-    const { height: windowHieght, width: windowWidth } = useWindowSize()
+    const { height: windowHieght, width: windowWidth } = useWindowSize();
+    const { scrollY } = useScroll();
+    const x = useMotionValue(600)
+    const isInView = useInView(wrapperRef);
 
     useEffect(() => {
         wrapperRef.current.style.height = `${wrapperRect.width}px`
     }, [wrapperRect]);
 
-    useEffect(() => {
-        handleHorizontalScroll()
+    useMotionValueEvent(scrollY, 'change', (latest) => {
+        // if (isInView) {
+        //     console.log(-(x.get() + (latest / 105)))
+        //     x.set(-(x.get() + (latest / 105)))
+        // }
+    })
+    
+    useAnimationFrame((time, delta) => {
+        // console.log(time, delta)
+        // console.log(delta)
+        // x.set(x.get() + 5)
     })
 
-    const handleHorizontalScroll = useCallback(() => {
-        props?.lenis?.on("scroll", ({ scroll }) => {
-            const start = wrapperRect.top - windowHieght
-            const end = wrapperRect.top + wrapperRect.height - windowHieght;
-            let progress = mapRange(start, end, scroll, 0, 1);
-            progress = clamp(0, progress, 1)
-            const position = progress * (nodeRect.width - windowWidth)
-            gsap.to(wrapperRef.current,
-                {
-                    scrollTrigger: wrapperRef.current,
-                    x: -position,
-                    stagger: 0.033,
-                    ease: "ease-in-out",
-                    duration: 0,
-                })
-        })
-    }, [props.lenis, wrapperRect, windowHieght, wrapperRef])
+    // const handleHorizontalScroll = useCallback(() => {
+    //     props?.lenis?.on("scroll", ({ scroll }) => {
+    //         const start = wrapperRect.top - windowHieght
+    //         const end = wrapperRect.top + wrapperRect.height - windowHieght;
+    //         let progress = mapRange(start, end, scroll, 0, 1);
+    //         progress = clamp(0, progress, 1)
+    //         const position = progress * (nodeRect.width - windowWidth)
+    //         gsap.fromTo(wrapperRef.current,
+    //             {
+    //                 x: 500
+    //             },
+    //             {
+    //                 scrollTrigger: wrapperRef.current,
+    //                 x: -position,
+    //                 stagger: 0.033,
+    //                 ease: "ease-in-out",
+    //                 duration: 0,
+    //             })
+    //     })
+    // }, [props.lenis, wrapperRect, windowHieght, wrapperRef])
 
     return <div
         ref={ref => {
             wrapperRectRef(ref)
         }}
     >
-        <div
+        <motion.div
+            style={{ x: x }}
             className={clsx(props.className)}
             ref={ref => {
                 wrapperRef.current = ref
@@ -51,8 +78,7 @@ const HorizontalSlides = props => {
             }}
         >
             {props.children}
-        </div>
-
+        </motion.div>
     </div>
 }
 

@@ -8,6 +8,19 @@ module.exports = {
     extend: {
       colors: {
         'about': '#00B2FF'
+      },
+      keyframes: {
+        'thumbUp': {
+          '0%': {
+            transform: 'translateY(-100px)',
+          },
+          '100%': {
+            transform: 'translateY(0)'
+          }
+        }
+      },
+      animation: {
+        'thumbUp': 'thumbUp 1s ease-in-out'
       }
     },
   },

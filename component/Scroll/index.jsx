@@ -4,7 +4,6 @@ import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Lenis from '@studio-freight/lenis'
 import { useRect } from "@studio-freight/hamo"
 import React, { useEffect, useState } from "react";
-
 gsap.registerPlugin(ScrollTrigger);
 
 const ScrollComponent = props => {

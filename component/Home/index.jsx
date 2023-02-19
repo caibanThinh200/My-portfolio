@@ -117,66 +117,7 @@ const Homepage = props => {
                             <img className="w-[50px] h-[50px] rounded-full object-cover" src="https://reactjs.org/favicon.ico" />
                         </div>
                     </div>
-                    <div className="border-4 flex flex-col justify-between text-end p-2 px-5 w-[200px] h-[200px]">
-                        <p className="text-3xl font-bold">React</p>
-                        <div>
-                            <img className="w-[50px] h-[50px] rounded-full object-cover" src="https://reactjs.org/favicon.ico" />
-                        </div>
-                    </div>
-                    <div className="border-4 flex flex-col justify-between text-end p-2 px-5 w-[200px] h-[200px]">
-                        <p className="text-3xl font-bold">React</p>
-                        <div>
-                            <img className="w-[50px] h-[50px] rounded-full object-cover" src="https://reactjs.org/favicon.ico" />
-                        </div>
-                    </div>
-                    <div className="border-4 flex flex-col justify-between text-end p-2 px-5 w-[200px] h-[200px]">
-                        <p className="text-3xl font-bold">React</p>
-                        <div>
-                            <img className="w-[50px] h-[50px] rounded-full object-cover" src="https://reactjs.org/favicon.ico" />
-                        </div>
-                    </div>
-                    <div className="border-4 flex flex-col justify-between text-end p-2 px-5 w-[200px] h-[200px]">
-                        <p className="text-3xl font-bold">React</p>
-                        <div>
-                            <img className="w-[50px] h-[50px] rounded-full object-cover" src="https://reactjs.org/favicon.ico" />
-                        </div>
-                    </div>
-                    <div className="border-4 flex flex-col justify-between text-end p-2 px-5 w-[200px] h-[200px]">
-                        <p className="text-3xl font-bold">React</p>
-                        <div>
-                            <img className="w-[50px] h-[50px] rounded-full object-cover" src="https://reactjs.org/favicon.ico" />
-                        </div>
-                    </div>
-                    <div className="border-4 flex flex-col justify-between text-end p-2 px-5 w-[200px] h-[200px]">
-                        <p className="text-3xl font-bold">React</p>
-                        <div>
-                            <img className="w-[50px] h-[50px] rounded-full object-cover" src="https://reactjs.org/favicon.ico" />
-                        </div>
-                    </div>
-                    <div className="border-4 flex flex-col justify-between text-end p-2 px-5 w-[200px] h-[200px]">
-                        <p className="text-3xl font-bold">React</p>
-                        <div>
-                            <img className="w-[50px] h-[50px] rounded-full object-cover" src="https://reactjs.org/favicon.ico" />
-                        </div>
-                    </div>
-                    <div className="border-4 flex flex-col justify-between text-end p-2 px-5 w-[200px] h-[200px]">
-                        <p className="text-3xl font-bold">React</p>
-                        <div>
-                            <img className="w-[50px] h-[50px] rounded-full object-cover" src="https://reactjs.org/favicon.ico" />
-                        </div>
-                    </div>
-                    <div className="border-4 flex flex-col justify-between text-end p-2 px-5 w-[200px] h-[200px]">
-                        <p className="text-3xl font-bold">React</p>
-                        <div>
-                            <img className="w-[50px] h-[50px] rounded-full object-cover" src="https://reactjs.org/favicon.ico" />
-                        </div>
-                    </div>
-                    <div className="border-4 flex flex-col justify-between text-end p-2 px-5 w-[200px] h-[200px]">
-                        <p className="text-3xl font-bold">React</p>
-                        <div>
-                            <img className="w-[50px] h-[50px] rounded-full object-cover" src="https://reactjs.org/favicon.ico" />
-                        </div>
-                    </div>
+
                     <div className="border-4 flex flex-col justify-between text-end p-2 px-5 w-[200px] h-[200px]">
                         <p className="text-3xl font-bold">React</p>
                         <div>

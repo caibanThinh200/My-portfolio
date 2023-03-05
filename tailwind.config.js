@@ -17,10 +17,28 @@ module.exports = {
           '100%': {
             transform: 'translateY(0)'
           }
+        },
+        'blindTextCursor': {
+          '0%': {
+            opacity: 0
+          },
+          '100%': {
+            opacity: 1
+          }
+        },
+        'typeWriter': {
+          'from': {
+            width: 0
+          },
+          'to': {
+            width: 'fit-content'
+          }
         }
       },
       animation: {
-        'thumbUp': 'thumbUp 1s ease-in-out'
+        'thumbUp': 'thumbUp 1s ease-in-out',
+        'autoTyping': 'blindTextCursor 400ms linear infinite alternate',
+
       }
     },
   },

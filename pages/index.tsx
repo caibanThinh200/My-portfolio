@@ -1,13 +1,52 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import Homepage from "../component/Home";
 import ScrollComponent from "../component/Scroll";
+import { useState, useRef } from 'react';
 // import styles from '@/styles/Home.module.css'
-
+import TypeWriter, { TypewriterClass } from 'typewriter-effect';
+import WebGl from "../component/WebGL";
+import gsap from 'gsap';
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  const [introProcess, setIntroProcess] = useState(false);
+  const introRef = useRef<HTMLDivElement>(null);
+
+  const listIntroduce = [
+    'Hello',
+    'My name is Thinh. I \'m\ a software developer',
+    'Welcome to my portfolio',
+    'Hope you enjoy'
+  ];
+
+  const typingEvent = (typewriter: TypewriterClass) => {
+    typewriter.pauseFor(2000)
+    listIntroduce.forEach(text => {
+      const typingSpeed = 50 - text.length;
+      const speed = 40 - text.length;
+      typewriter
+        .changeDelay(typingSpeed)
+        .typeString(text)
+        .pauseFor(1000)
+        .changeDeleteSpeed(speed)
+        .deleteChars(text.length)
+        .pauseFor(1500)
+        .callFunction(() => {
+          if (listIntroduce.indexOf(text) === listIntroduce.length - 1) {
+            gsap.to(introRef.current, {
+              opacity: 0,
+              display: 'none',
+              onComplete: () => {
+                setTimeout(() => { setIntroProcess(true) }, 1000)
+              }
+            })
+          }
+        });
+    })
+    typewriter.start()
+  }
+
   return (
     <>
       <Head>
@@ -16,10 +55,26 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div>
-        <ScrollComponent>
-          <Homepage />
-        </ScrollComponent>
+      <div className='relative'>
+        <div ref={introRef} className='bg-black absolute w-full h-full z-10 min-h-[100vh]'>
+          <div className='text-white w-full h-full flex justify-center items-center'>
+            <TypeWriter
+              options={
+                {
+                  skipAddStyles: true,
+                  wrapperClassName: 'text-6xl duration-1000 overflow-hidden border-white',
+                  cursorClassName: 'text-6xl animate-autoTyping'
+                }
+              }
+              onInit={typingEvent}
+            />
+          </div>
+        </div>
+        {introProcess && <>
+          <WebGl />
+          <ScrollComponent>
+            <Homepage />
+          </ScrollComponent></>}
       </div>
     </>
   )

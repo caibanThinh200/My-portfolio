@@ -1,10 +1,7 @@
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import { gsap } from 'gsap'
 // import { ScrollSmoother } from "gsap/dist/ScrollSmoother";
 import Lenis from '@studio-freight/lenis'
-import { useRect } from "@studio-freight/hamo"
 import React, { useEffect, useState } from "react";
-gsap.registerPlugin(ScrollTrigger);
 
 const ScrollComponent = props => {
     const [lenis, setLenis] = useState();
@@ -39,7 +36,7 @@ const ScrollComponent = props => {
         requestAnimationFrame(raf)
     }, []);
 
-    return <div>
+    return <div className='h-full w-full'>
         {React.cloneElement(props.children, { lenis })}
     </div>
 }

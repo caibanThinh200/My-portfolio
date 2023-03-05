@@ -1,8 +1,6 @@
 import handleViewport from "react-in-viewport";
 
-interface IInViewComponent extends JSX.Element {}
-
-const InViewComponent: React.FC<IInViewComponent> = props => {
+const InViewComponent = props => {
     return <div className={props.className}>
         {props.children}
     </div>

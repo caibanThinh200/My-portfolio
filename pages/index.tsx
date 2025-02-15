@@ -1,28 +1,28 @@
-import Head from 'next/head'
-import { Inter } from '@next/font/google'
+import Head from "next/head";
 import Homepage from "../component/Home";
 import ScrollComponent from "../component/Scroll";
-import { useState, useRef } from 'react';
+import { useState, useRef } from "react";
 // import styles from '@/styles/Home.module.css'
-import TypeWriter, { TypewriterClass } from 'typewriter-effect';
+import TypeWriter, { TypewriterClass } from "typewriter-effect";
 import WebGl from "../component/WebGL";
-import gsap from 'gsap';
-const inter = Inter({ subsets: ['latin'] })
+import gsap from "gsap";
+import StrapLine from "@/component/ui/StrapLines";
 
 export default function Home() {
   const [introProcess, setIntroProcess] = useState(false);
   const introRef = useRef<HTMLDivElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
 
   const listIntroduce = [
-    'Hello',
-    'My name is Thinh. I \'m\ a software developer',
-    'Welcome to my portfolio',
-    'Hope you enjoy'
+    "Hello",
+    "My name is Thinh. I 'm a software developer",
+    "Welcome to my portfolio",
+    "Hope you enjoy",
   ];
 
   const typingEvent = (typewriter: TypewriterClass) => {
-    typewriter.pauseFor(2000)
-    listIntroduce.forEach(text => {
+    typewriter.pauseFor(2000);
+    listIntroduce.forEach((text) => {
       const typingSpeed = 50 - text.length;
       const speed = 40 - text.length;
       typewriter
@@ -33,19 +33,39 @@ export default function Home() {
         .deleteChars(text.length)
         .pauseFor(1500)
         .callFunction(() => {
-          if (listIntroduce.indexOf(text) === listIntroduce.length - 1) {
-            gsap.to(introRef.current, {
-              opacity: 0,
-              display: 'none',
-              onComplete: () => {
-                setTimeout(() => { setIntroProcess(true) }, 1000)
-              }
-            })
+          if (
+            !introProcess &&
+            listIntroduce.indexOf(text) === listIntroduce.length - 1
+          ) {
+            // gsap
+            //   .fromTo(
+            //     introRef.current,
+            //     {
+            //       // opacity: 0,
+            //       // display: "none",
+            //       // onComplete: () => {
+            //       //   setIntroProcess(true);
+            //       // },
+            //       left: 0,
+            //     },
+            //     {
+            //       left: "100%",
+            //       duration: 1,
+            //     }
+            //   )
+            //   .then(() => {
+            //     setIntroProcess(true);
+            //   });
+            gsap
+              .fromTo(overlayRef.current, { bottom: -300 }, { bottom: -100 })
+              .then(() => {
+                setIntroProcess(true);
+              });
           }
         });
-    })
-    typewriter.start()
-  }
+    });
+    typewriter.start();
+  };
 
   return (
     <>
@@ -55,27 +75,77 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className='relative'>
-        <div ref={introRef} className='bg-black absolute w-full h-full z-10 min-h-[100vh]'>
-          <div className='text-white w-full h-full flex justify-center items-center'>
-            <TypeWriter
-              options={
-                {
+      <div className="relative">
+        {/* {!introProcess && (
+          <button
+            className="fixed p-2 bg-white bottom-10 right-10 z-[120] rounded-full px-5"
+            onClick={() => {
+              gsap.to(introRef.current, {
+                // opacity: 0,
+                // display: "none",
+                onComplete: () => {
+                  setIntroProcess(true);
+                },
+                // left: 0,
+              });
+              gsap
+                .fromTo(
+                  introRef.current,
+                  {
+                    opacity: 0,
+                    display: "none",
+                    // onComplete: () => {
+                    //   setIntroProcess(true);
+                    // },
+                    // left: 0,
+                  },
+                  {
+                    opacity: 0,
+                    display: "block",
+                    // left: "100%",
+                    duration: 1,
+                  }
+                )
+                .then(() => {
+                  setIntroProcess(true);
+                });
+              gsap
+                .fromTo(overlayRef.current, { bottom: -300 }, { bottom: -100 })
+                .then(() => {
+                  setIntroProcess(true);
+                });
+            }}
+          >
+            Skip
+          </button>
+        )} */}
+        {/* {!introProcess && (
+          <div
+            ref={introRef}
+            className="bg-black absolute w-full h-full min-h-[100vh]"
+          >
+            <div className="w-full h-full grid place-items-center">
+              <TypeWriter
+                options={{
                   skipAddStyles: true,
-                  wrapperClassName: 'text-6xl duration-1000 overflow-hidden border-white',
-                  cursorClassName: 'text-6xl animate-autoTyping'
-                }
-              }
-              onInit={typingEvent}
-            />
+                  wrapperClassName:
+                    "text-6xl duration-1000 overflow-hidden border-white text-white ",
+                  cursorClassName: "text-6xl animate-autoTyping text-white",
+                }}
+                onInit={typingEvent}
+              />
+            </div>
           </div>
-        </div>
-        {introProcess && <>
-          <WebGl />
-          <ScrollComponent>
-            <Homepage />
-          </ScrollComponent></>}
+        )} */}
+        <>
+          <StrapLine />
+          <Homepage />
+        </>
+        {/* <div
+          ref={overlayRef}
+          className="fixed bg-gradient-to-b from-[transparent] -bottom-[300px] from-20% to-white/40 -left-1/3 h-[300px] w-[2000px] blur-3xl rounded-t-[100%]"
+        ></div> */}
       </div>
     </>
-  )
+  );
 }

@@ -17,21 +17,26 @@ const Contact: React.FC<ContactProps> = (props) => {
             <form className="flex flex-col gap-5">
               <input
                 placeholder="Your name"
-                className="bg-[#929292] p-3 pl-5 rounded-lg w-10/12 placeholder:text-white"
+                className="bg-[#3F3F41] p-3 pl-5 rounded-lg w-10/12 placeholder:text-white"
               />
               <input
                 placeholder="Your email"
-                className="bg-[#929292] p-3 pl-5 rounded-lg w-10/12 placeholder:text-white"
+                className="bg-[#3F3F41] p-3 pl-5 rounded-lg w-10/12 placeholder:text-white"
               />
               <input
                 placeholder="Your phone number"
-                className="bg-[#929292] p-3 pl-5 rounded-lg w-10/12 placeholder:text-white"
+                className="bg-[#3F3F41] p-3 pl-5 rounded-lg w-10/12 placeholder:text-white"
               />
               <textarea
                 placeholder="Message you want to sent"
                 rows={5}
-                className="bg-[#929292] p-3 pl-5 rounded-lg w-10/12 placeholder:text-white"
+                className="bg-[#3F3F41] p-3 pl-5 rounded-lg w-10/12 placeholder:text-white"
               />
+              <div>
+                <button className="bg-blue-600 text-white p-3 px-10 w-1/3 rounded-lg">
+                  Submit
+                </button>
+              </div>
             </form>
           </div>
         </div>

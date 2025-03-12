@@ -93,7 +93,7 @@ const Projects = () => {
   };
 
   return (
-    <section className="my-36 pr-36">
+    <section className="my-36 mr-48">
       <div>
         <p
           id="project"

@@ -1,7 +1,7 @@
 import HorizontalSlides from "../HorizontalSlides";
-import { useRef, useEffect, useLayoutEffect } from "react";
+import { useRef, useEffect, useLayoutEffect, useCallback } from "react";
 import gsap from "gsap";
-import { ABOUTS, TECH_STACKS } from "../../constant/data";
+import { ABOUTS, PROJECTS, TECH_STACKS } from "../../constant/data";
 import InView from "../InView";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Image from "next/image";
@@ -11,57 +11,28 @@ import Projects from "./Projects";
 import Link from "next/link";
 import Skill from "./Skill";
 import Contact from "../Contact";
+import Card from "../ui/card";
+import Lenis from "@studio-freight/lenis";
+import About from "./About";
+import Service from "./Services";
 gsap.registerPlugin(ScrollTrigger);
 
-const Homepage = () => {
+const Homepage = (props: { lenis?: Lenis }) => {
   const thumbRef = useRef(null);
   const scrollDownRef = useRef(null);
 
-  useLayoutEffect(() => {
-    // gsap.set()
-    // gsap
-    //   .timeline()
-    //   .from("#main-title", { y: -500 })
-    //   .from("#sub-title", { y: -100, opacity: 0 })
-    //   .from("#button button", { x: -500, stagger: 0.3 })
-    //   .from(thumbRef.current, { y: 200, opacity: 0 })
-    //   .from(scrollDownRef.current, { y: 200 })
-    //   .to("#main-title", { duration: 1, y: 0 })
-    //   .to("#sub-title", { duration: 1, y: 0, opacity: 1 })
-    //   .to("#button button", { duration: 0.8, x: 0, stagger: 0.3 })
-    //   .to(thumbRef.current, { duration: 1, y: 0, opacity: 1 })
-    //   .to(scrollDownRef.current, { y: 0, duration: 2 });
-    // .then(() => {
-    //   gsap.fromTo(
-    //     scrollDownRef.current,
-    //     { y: 0 },
-    //     {
-    //       y: 200,
-    //       duration: 1,
-    //       // scrollTrigger: {
-    //       //   // scrub: true,
-    //       //   start: () => 0,
-    //       //   end: "+=1000",
-    //       // },
-    //     }
-    //   );
-    // });
-    // gsap.fromTo(
-    //   "#about",
-    //   {
-    //     opacity: 0,
-    //     x: -100,
-    //     // repeat: -1,
-    //   },
-    //   {
-    //     duration: 1,
-    //     x: 0,
-    //     opacity: 1,
-    //     scrollTrigger: "#about",
-    //     // repeat: -1,
-    //   }
-    // );
-  }, []);
+  const handleNavigateSection = useCallback(
+    (sectionId: string) => {
+      const section = document.querySelector(sectionId);
+      console.log(section);
+      return props.lenis?.scrollTo(section, {
+        duration: 1,
+        offset: -50,
+        easing: (x) => -(Math.cos(Math.PI * x) - 1) / 2,
+      });
+    },
+    [props.lenis]
+  );
 
   return (
     <div>
@@ -73,12 +44,31 @@ const Homepage = () => {
                 <p className="font-bold text-2xl">Sections</p>
               </li>
               <li className="font-bold">
-                <Link href={"#about"}>About me</Link>
+                <button onClick={() => handleNavigateSection("#main-title")}>
+                  Welcome
+                </button>
               </li>
               <li className="font-bold">
-                <Link href="#experiences">Experiences</Link>
+                <button onClick={() => handleNavigateSection("#about")}>
+                  About me
+                </button>
               </li>
-              <li className="font-bold">Technical</li>
+              <li className="font-bold">
+                <button onClick={() => handleNavigateSection("#process")}>
+                  Working process
+                </button>
+              </li>
+              <li className="font-bold">
+                {" "}
+                <button onClick={() => handleNavigateSection("#skills")}>
+                  Skills
+                </button>
+              </li>
+              <li className="font-bold">
+                <button onClick={() => handleNavigateSection("#experiences")}>
+                  Experiences
+                </button>
+              </li>
             </ul>
           </div>
         </div>
@@ -88,7 +78,7 @@ const Homepage = () => {
           className="fixed bottom-10 left-1/2 z-[100] -translate-x-1/2 flex flex-col gap-2 items-center font-bold text-white"
         >
           <Image
-            className="animate-bounce"
+            // className="animate-bounce"
             alt="arrow"
             src={"/scroll-down.png"}
             width={50}
@@ -137,40 +127,30 @@ const Homepage = () => {
             </div>
           </div> */}
           </div>
-          <Introduce />
+          <About />
+          <Service />
           <Skill />
           <Histories />
           <Projects />
           {/* <HorizontalSlides
-          header={
-            <div>
-              <p className="font-bold text-5xl pl-5 py-5 border-l-4 border-l-blue-600">
-                My skills
-              </p>
-            </div>
-          }
-          wrapperClassName="sticky top-[20%]"
-          lenis={props.lenis}
-          className="gap-x-20 mt-20 inline-flex"
-        >
-          {TECH_STACKS.map((item) => (
-            <div
-              key={item.title}
-              className="border-4 flex flex-col justify-between text-end p-2 px-5 w-[300px] h-[400px]"
-            >
-              <p className="text-3xl font-bold">{item.title}</p>
+            header={
               <div>
-                <img
-                  className="w-[50px] h-[50px] rounded-full object-cover"
-                  src="https://reactjs.org/favicon.ico"
-                />
+                <p className="font-bold text-5xl pl-5 py-5 border-l-4 border-l-blue-600">
+                  My skills
+                </p>
               </div>
-            </div>
-          ))}
-        </HorizontalSlides> */}
+            }
+            wrapperClassName="sticky top-[20%]"
+            lenis={props.lenis}
+            className="gap-10 mt-20 inline-flex"
+          >
+            {PROJECTS.map((project, idx) => (
+              <Card key={idx} {...project} />
+            ))}
+          </HorizontalSlides> */}
+          <Contact />
         </div>
       </div>
-      <Contact />
     </div>
   );
 };

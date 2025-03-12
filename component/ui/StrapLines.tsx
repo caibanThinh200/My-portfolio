@@ -16,7 +16,7 @@ const Slide: React.FC<StrapLinesProps> = (props) => {
       autoFill
       play
       speed={20}
-      className="bg-white py-5 bottom-10 !rotate-[-8deg] !w-[calc(100%+100vw)] !absolute -left-1/2 gap-10"
+      className="bg-black py-5 bottom-10 !rotate-[-8deg] !w-[calc(100%+100vw)] !absolute -left-1/2 gap-10"
     >
       {SKILLS.frontend.map((skill) => (
         <div className="flex items-center gap-3 py-1 mx-5">
@@ -27,7 +27,7 @@ const Slide: React.FC<StrapLinesProps> = (props) => {
             src={skill.thumbnail}
             alt={skill.name}
           />
-          <p className="text-black">{skill.name}</p>
+          <p className="text-white">{skill.name}</p>
         </div>
       ))}
     </Marquee>
@@ -71,7 +71,7 @@ const VerticalSlide: React.FC<StrapLinesProps> = (props) => {
       autoFill
       speed={20}
       play
-      className="bg-black py-5 top-0 -left-[30%] !rotate-[60deg] !w-[calc(100%+100vw)] !absolute"
+      className="bg-white py-5 top-0 -left-[30%] !rotate-[60deg] !w-[calc(100%+100vw)] !absolute"
     >
       {SKILLS.backend.map((skill) => (
         <div className="flex items-center gap-3 py-1 mx-5">
@@ -82,7 +82,7 @@ const VerticalSlide: React.FC<StrapLinesProps> = (props) => {
             src={skill.thumbnail}
             alt={skill.name}
           />
-          <p className="text-white">{skill.name}</p>
+          <p className="text-black">{skill.name}</p>
         </div>
       ))}
     </Marquee>

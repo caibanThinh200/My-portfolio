@@ -5,10 +5,10 @@ interface SkillProps {}
 
 const Skill: React.FC<SkillProps> = () => {
   return (
-    <section className="mr-36">
+    <section className="mr-48">
       <div className="w-1/3 pb-10">
         <p
-          id="experiences"
+          id="skills"
           className=" font-bold text-5xl sticky top-[20%] pl-5 py-5 border-l-4 border-l-blue-600 scroll-mt-72"
         >
           My Skills

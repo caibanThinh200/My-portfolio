@@ -144,7 +144,7 @@ const Histories = (props: IStackedCard) => {
   }, [isMobileScreen]);
 
   return (
-    <section ref={$wrapper} className="mr-36">
+    <section ref={$wrapper} className="mr-48">
       <div className="w-1/3 pb-10">
         <p
           id="experiences"

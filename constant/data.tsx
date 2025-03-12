@@ -2,12 +2,12 @@ export const ABOUTS = [
   {
     title: "Who Am I",
     description:
-      "A software developer with three years of experience in the industry. I am passionate about building applications that are not only functional but also engaging, with a strong focus on user experience and performance. My journey in development has been driven by a commitment to quality, efficiency, and a user-centered approach to design.",
+      "A software developer with 3+ years of experience in the industry. I'm passionate about building applications that are not only functional but also engaging, with a strong focus on user experience and performance.",
   },
   {
     title: "What I Do",
     description:
-      "In my role, I specialize in creating user-friendly interfaces that simplify complex processes, making applications easy and enjoyable to navigate. My experience includes working on front-end and back-end optimization, allowing me to improve app performance for faster, more responsive experiences. Every project I undertake is an opportunity to refine my skills, ensuring seamless and efficient user interactions across all devices.",
+      "I specialize in building user-friendly interfaces that simplify complex processes, making applications easy and enjoyable to navigate. My experience includes working on front-end and back-end optimization, improving app performance for faster, more responsive experiences.",
   },
   {
     title: "What My Future Goal Is",

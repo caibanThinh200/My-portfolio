@@ -137,14 +137,14 @@ export default function Home() {
             </div>
           </div>
         )} */}
-        <>
-          <StrapLine />
-          <Homepage />
-        </>
         {/* <div
           ref={overlayRef}
           className="fixed bg-gradient-to-b from-[transparent] -bottom-[300px] from-20% to-white/40 -left-1/3 h-[300px] w-[2000px] blur-3xl rounded-t-[100%]"
         ></div> */}
+        <StrapLine />
+        <ScrollComponent>
+          <Homepage />
+        </ScrollComponent>
       </div>
     </>
   );

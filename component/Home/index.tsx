@@ -37,7 +37,7 @@ const Homepage = (props: { lenis?: Lenis }) => {
   return (
     <div>
       <div
-        className="lg:p-20 lg:px-20 p-10 container relative text-white"
+        className="lg:p-20 lg:px-20 p-10 relative text-white"
         id="main"
       >
         <div className="fixed right-20 top-20 z-[100] hidden lg:block">

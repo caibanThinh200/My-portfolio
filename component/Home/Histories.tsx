@@ -108,7 +108,7 @@ const Histories = (props: IStackedCard) => {
         gsap.to(cardInner, {
           scrollTrigger: {
             trigger: card,
-            start: () => (isMobileScreen ? `top top+=100` : `top top+=15%`),
+            start: () => (isMobileScreen ? `top top+=50` : `top top+=15%`),
             end: () => `bottom bottom`,
             scrub: 2,
             // markers: true,
@@ -126,7 +126,7 @@ const Histories = (props: IStackedCard) => {
 
         ScrollTrigger.create({
           trigger: card,
-          start: () => (isMobileScreen ? `top top+=100` : `top top+=15%`),
+          start: () => (isMobileScreen ? `top top+=50` : `top top+=15%`),
           pin: true,
           scrub: 0.3,
           pinSpacing: false,
@@ -144,14 +144,14 @@ const Histories = (props: IStackedCard) => {
   }, [isMobileScreen]);
 
   return (
-    <section ref={$wrapper} className="mr-48">
-      <div className="w-1/3 pb-10">
-        <p
+    <section ref={$wrapper} className="lg:mr-48">
+      <div className="lg:w-1/3 pb-10">
+        <h2
           id="experiences"
-          className=" font-bold text-5xl sticky top-[30%] pl-5 py-5 border-l-4 border-l-blue-600 scroll-mt-72"
+          className="sticky top-[30%] pl-5 py-5 border-l-4 border-l-blue-600 scroll-mt-72"
         >
           Experiences
-        </p>
+        </h2>
       </div>
       <div className="container" ref={$startTrigger}>
         <div className="">
@@ -161,7 +161,7 @@ const Histories = (props: IStackedCard) => {
               // key={index}
             >
               <div
-                className="card-inner flex w-full flex-col-reverse items-center justify-center gap-y-5 rounded-[30px] text-center will-change-transform lg:flex-row lg:gap-x-10 lg:px-10 lg:py-14 lg:text-left xl:justify-between xl:pb-[60px] xl:pl-[80px] xl:pr-[60px] xl:pt-[88px]"
+                className="card-inner flex w-full flex-col-reverse items-center justify-center gap-y-5 rounded-[30px] text-center will-change-transform lg:flex-row lg:gap-x-10 p-8 lg:px-10 lg:py-14 lg:text-left xl:justify-between xl:pb-[60px] xl:pl-[80px] xl:pr-[60px] xl:pt-[88px]"
                 style={{
                   backgroundColor: card.cardBackgroundColor,
                 }}
@@ -182,7 +182,7 @@ const Histories = (props: IStackedCard) => {
                     </ul>
                   </div>
                 </div>
-                <div className="relative mx-auto aspect-[640/430] w-2/3 lg:w-1/2 xl:w-[48%]">
+                <div className="relative mx-auto lg:aspect-[640/430] w-2/3 lg:w-1/2 xl:w-[48%]">
                   <Image
                     src={card?.logo}
                     alt={card?.title}

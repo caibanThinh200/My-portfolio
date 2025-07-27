@@ -2,14 +2,14 @@ interface ServiceProps {}
 
 const Service: React.FC<ServiceProps> = () => {
   return (
-    <section className="mr-48">
+    <section className="lg:mr-48">
       <div>
-        <p
+        <h2
           id="#services"
-          className=" font-bold text-5xl sticky top-[30%] pl-5 py-5 border-l-4 border-l-blue-600"
+          className="sticky top-[30%] pl-5 py-5 border-l-4 border-l-blue-600"
         >
           My services
-        </p>
+        </h2>
       </div>
       <div className="mt-10 grid lg:grid-cols-3 gap-10">
         {/* Website Development */}

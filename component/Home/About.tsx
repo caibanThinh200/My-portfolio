@@ -80,20 +80,20 @@ const About: React.FC<AboutProps> = () => {
   }, []);
 
   return (
-    <section className="my-20 mt-[50vh] pr-40 flex flex-col gap-10">
+    <section className="lg:my-20 lg:mt-[50vh] mt-20 lg:pr-40 flex flex-col gap-10">
       <div>
-        <p
+        <h2
           id="about"
-          className=" font-bold text-5xl sticky top-[30%] pl-5 py-5 border-l-4 border-l-blue-600"
+          className="font-bold sticky top-[30%] pl-5 py-5 border-l-4 border-l-blue-600"
         >
           About me
-        </p>
+        </h2>
       </div>
-      <div className="flex lg:flex-row flex-col gap-20 items-center mt-10">
+      <div className="flex lg:flex-row flex-col gap-20 items-center lg:mt-10">
         <div ref={avatarWrapperRef} className="cursor-pointer">
           <div
             ref={avatarRef}
-            className="relative w-[300px] h-[300px] rounded-full overflow-hidden scale-0 transform-3d perspective-distant"
+            className="relative size-[200px] lg:size-[300px] rounded-full overflow-hidden scale-0 transform-3d perspective-distant"
           >
             <Image
               ref={frontRef}

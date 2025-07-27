@@ -36,8 +36,11 @@ const Homepage = (props: { lenis?: Lenis }) => {
 
   return (
     <div>
-      <div className="p-20 px-20 relative text-white" id="main">
-        <div className="fixed right-20 top-20 z-[100]">
+      <div
+        className="lg:p-20 lg:px-20 p-10 container relative text-white"
+        id="main"
+      >
+        <div className="fixed right-20 top-20 z-[100] hidden lg:block">
           <div className="flex gap-5">
             <ul className="flex flex-col gap-5 items-end border-r-4 border-r-blue-600 py-2 pr-5">
               <li>
@@ -88,11 +91,18 @@ const Homepage = (props: { lenis?: Lenis }) => {
         </div>
 
         <div className="flex flex-col gap-[20vh] relative z-20">
+          <Image
+            className="absolute opacity-30"
+            width={1000}
+            height={500}
+            alt="grid"
+            src={"/grid.svg"}
+          />
           <div className="flex lg:w-1/2 gap-x-5 mt-0">
             <div className="flex flex-col gap-y-10 flex-1 text-white">
               <h1
                 id="main-title"
-                className="text-5xl font-bold py-5 border-l-4 border-l-blue-600 pl-5 leading-normal"
+                className="lg:text-5xl text-2xl font-bold py-5 border-l-4 border-l-blue-600 pl-5 leading-normal"
               >
                 Hello, I'm Thinh <br /> Welcome to My Portfolio
               </h1>
@@ -103,12 +113,12 @@ const Homepage = (props: { lenis?: Lenis }) => {
               </p>
               <div id="button" className="flex flex-col gap-y-5">
                 <div>
-                  <button className="rounded-full drop-shadow-lg bg-blue-800 px-10 shadow text-xl text-white font-bold py-2 w-4/12">
+                  <button className="rounded-full drop-shadow-lg bg-blue-800 px-10 shadow text-xl text-white font-bold py-2 lg:w-4/12">
                     My resume
                   </button>
                 </div>
                 <div>
-                  <button className="rounded-full bg-white px-10 text-xl font-bold py-2 w-4/12 text-black">
+                  <button className="rounded-full bg-white px-10 text-xl font-bold py-2 lg:w-4/12 text-black">
                     Github
                   </button>
                 </div>
@@ -131,7 +141,8 @@ const Homepage = (props: { lenis?: Lenis }) => {
           <Service />
           <Skill />
           <Histories />
-          <Projects />
+          {/* <HorizontalSlides /> */}
+          {/* <Projects /> */}
           {/* <HorizontalSlides
             header={
               <div>

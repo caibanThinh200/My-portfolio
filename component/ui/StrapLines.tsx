@@ -16,10 +16,10 @@ const Slide: React.FC<StrapLinesProps> = (props) => {
       autoFill
       play
       speed={20}
-      className="bg-black py-5 bottom-10 !rotate-[-8deg] !w-[calc(100%+100vw)] !absolute -left-1/2 gap-10"
+      className="bg-black lg:py-5 py-2 bottom-10 !rotate-[-8deg] !w-[calc(100%+100vw)] !absolute -left-1/2 gap-10"
     >
       {SKILLS.frontend.map((skill) => (
-        <div className="flex items-center gap-3 py-1 mx-5">
+        <div className="flex items-center gap-3 lg:py-1 mx-5">
           <Image
             width={50}
             height={50}
@@ -71,10 +71,10 @@ const VerticalSlide: React.FC<StrapLinesProps> = (props) => {
       autoFill
       speed={20}
       play
-      className="bg-white py-5 top-0 -left-[30%] !rotate-[60deg] !w-[calc(100%+100vw)] !absolute"
+      className="bg-white lg:py-5 py-2 top-0 lg:-left-[30%] -left-[85%] !rotate-[83deg] lg:!rotate-[60deg] !w-[calc(100%+250vw)] lg:!w-[calc(100%+100vw)] !absolute"
     >
       {SKILLS.backend.map((skill) => (
-        <div className="flex items-center gap-3 py-1 mx-5">
+        <div className="flex items-center gap-3 lg:py-1 mx-5">
           <Image
             width={50}
             height={50}
